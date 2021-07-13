@@ -1,22 +1,23 @@
 
 main {
-    margin: 0 auto;
-    border: solid 1px;
-    width: 80%;
+  margin: 0 auto;
+  border: solid 1px;
+  width: 80%;
 }
 
 #tasks {
-    width: 100%;
+  width: 100%;
 }
+
 #tasks tr {
-    border: 1px solid #ddd;
-    padding: 8px;
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
 #tasks td {
-    padding: 4px;
-} 
-  
+  padding: 4px;
+}
+
 #tasks tr:nth-child(odd) {
-    background-color: lightgray;
+  background-color: lightgray;
 }
