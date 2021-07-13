@@ -9,7 +9,7 @@
 - CSS
 ## Live Demo
 
-[Live Demo Link](https://jmagero.github.io/to-dos-list/)
+[Live Demo Link](https://stupefied-jang-ba5a37.netlify.app/)
 
 ## Getting Started
 
