@@ -3,7 +3,6 @@ import { tasks } from './taskClass.js';
 
 export default () => {
   const checkboxes = document.querySelectorAll('.checkbox');
-  //console.log(checkboxes);
   for (let i = 0; i < checkboxes.length; i += 1) {
     checkboxes[i].addEventListener('change', () => {
       if (checkboxes[i].checked) {
