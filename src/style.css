@@ -1,4 +1,4 @@
-
+/* 
 main {
   margin: 0 auto;
   border: solid 1px;
@@ -20,4 +20,38 @@ main {
 
 #tasks tr:nth-child(odd) {
   background-color: lightgray;
+}
+
+.hide {
+  display: none;
+}
+
+.drag-over {
+  border: dashed 3px red;
+}
+
+tr.drag-sort-active {
+  background: transparent;
+  color: transparent;
+  border: dashed 3px red;
+} */
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  list-style-type: none;
+  color: black;
+}
+
+/* .draggable {
+  cursor: move;
+} */
+
+li.drag-sort-active {
+  background: transparent;
+  color: transparent;
+  border: 1px solid #4ca1af;
 }
