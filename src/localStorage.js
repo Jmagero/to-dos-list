@@ -1,4 +1,5 @@
 import { tasks } from './taskClass.js';
+// eslint-disable-next-line import/no-cycle
 import addTasks from './showTasks.js';
 
 const saveTasks = () => {

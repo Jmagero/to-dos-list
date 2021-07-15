@@ -9,9 +9,8 @@ a {
   color: black;
 }
 
-
 li.drag-sort-active {
   background: transparent;
   color: transparent;
-  border: dashed 3px red;;
+  border: dashed 3px red;
 }

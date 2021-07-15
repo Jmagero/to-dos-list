@@ -1,4 +1,4 @@
-import { getTasks, saveTasks } from './localstorage.js';
+import { saveTasks } from './localStorage.js';
 import { tasks } from './taskClass.js';
 
 export default () => {

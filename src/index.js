@@ -1,9 +1,8 @@
 import './style.css';
 import { Task, tasks } from './taskClass.js';
-import addTasks  from './showTasks';
-import { getTasks, saveTasks } from './localstorage.js';
+import addTasks from './sort.js';
+import { getTasks, saveTasks } from './localStorage.js';
 import checkbox from './checkBox.js';
-
 
 document.addEventListener('DOMContentLoaded', () => {
   getTasks();
