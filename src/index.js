@@ -1,26 +1,62 @@
 import './style.css';
+import { Task, tasks } from './taskClass.js';
+import addTasks  from './showTasks';
+import { getTasks, saveTasks } from './localstorage.js';
+import checkbox from './checkBox.js';
 
-const tasksDiv = document.getElementById('tasks');
-const tasks = [];
-class Task {
-  constructor(index, description, completed) {
-    this.index = index;
-    this.description = description;
-    this.completed = completed;
+
+document.addEventListener('DOMContentLoaded', () => {
+  getTasks();
+  checkbox();
+});
+
+const inputSelector = document.querySelector('#inputTask');
+
+inputSelector.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    const task = new Task(inputSelector.value);
+    tasks.push(task);
+    addTasks();
+    saveTasks();
+    inputSelector.value = '';
   }
-}
-const task1 = new Task(1, 'first task', false);
-const task2 = new Task(2, 'second task', false);
-const task3 = new Task(3, 'third task', true);
-const task4 = new Task(4, 'forth task', true);
-tasks.push(task1, task2, task3, task4);
-const addTasks = (tasks) => {
-  for (let i = 0; i < tasks.length; i += 1) {
-    const tableRow = document.createElement('tr');
-    const task = tasks[i];
-    tableRow.innerHTML = `<td>${task.index}</td>
-                            <td>${task.description}</td>`;
-    tasksDiv.appendChild(tableRow);
-  }
-};
-addTasks(tasks);
+});
+
+// console.log(tasks);
+
+// function enableDragList(tasks) {
+//   tasks.forEach(element => {
+//     //enableDragItem(element)
+//     element.ondrag = handleDrag;
+//     element.ondragend = handleDrop;
+//   });
+//   //Array.prototype.map.call(tasks.children, (item) => {enableDragItem(item)});
+// }
+
+// function enableDragItem(item) {
+//   item.setAttribute('draggable', true)
+//   item.ondrag = handleDrag;
+//   item.ondragend = handleDrop;
+// }
+
+// function handleDrag(e) {
+//   const selectedItem = e.target,
+//         list = selectedItem.parentNode,
+//         x = e.clientX,
+//         y = e.clientY;
+  
+//   selectedItem.classList.add('drag-sort-active');
+//   let swapItem = document.elementFromPoint(x, y) === null ? selectedItem : document.elementFromPoint(x, y);
+//   console.log(swapItem);
+  
+//   if (list === swapItem.parentNode) {
+//     swapItem = swapItem !== selectedItem.nextSibling ? swapItem : swapItem.nextSibling;
+//     list.insertBefore(selectedItem, swapItem);
+//   }
+// }
+
+// function handleDrop(item) {
+//   item.target.classList.remove('drag-sort-active');
+// }
+
+// (()=> {enableDragSort('drag-sort-enable')})();
