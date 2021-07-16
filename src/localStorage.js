@@ -8,8 +8,8 @@ const saveTasks = () => {
 
 const getTasks = () => {
   if (localStorage.getItem('tasksKey')) {
-    const getTasks = JSON.parse(localStorage.getItem('tasksKey'));
-    getTasks.forEach((t) => {
+    const loadTasks = JSON.parse(localStorage.getItem('tasksKey'));
+    loadTasks.forEach((t) => {
       tasks.push(t);
     });
     addTasks();

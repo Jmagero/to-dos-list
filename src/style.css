@@ -1,16 +1,22 @@
-
 ul {
   list-style-type: none;
 }
 
 a {
   text-decoration: none;
-  list-style-type: none;
   color: black;
 }
 
-li.drag-sort-active {
-  background: transparent;
-  color: transparent;
-  border: dashed 3px red;
+.draggable {
+  cursor: move;
+}
+
+.hover {
+  background-color: gray;
+  opacity: 0.6;
+}
+
+.hover2 {
+  background-color: rgb(255, 0, 64);
+  opacity: 0.6;
 }

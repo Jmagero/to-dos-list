@@ -4,39 +4,52 @@ import addTasks from './showTasks.js';
 // eslint-disable-next-line import/no-cycle
 import { saveTasks } from './localStorage.js';
 
-export default () => {
+const sort = () => {
   const draggables = document.querySelectorAll('.draggable');
-  let dragged;
+  let dragged = null;
+  let dropped = null;
   draggables.forEach((e) => {
-    e.addEventListener('dragstart', (event) => {
-      dragged = event.target;
+    e.addEventListener('dragstart', () => {
+      e.classList.add('hover');
+      dragged = e.children[0].children[0].id;
+    });
+
+    e.addEventListener('dragend', () => {
+      e.classList.remove('hover');
+    });
+
+    e.addEventListener('dragenter', (event) => {
+      if (dragged !== event.target) { e.classList.add('hover2'); }
+    });
+
+    e.addEventListener('dragleave', () => {
+      e.classList.remove('hover2');
     });
 
     e.addEventListener('dragover', (event) => {
       event.preventDefault();
     });
 
-    e.addEventListener('drop', (event) => {
-      event.preventDefault();
-
-      for (let i = 0; i < event.target.classList.length; i += 1) {
-        if (event.target.classList[i] === 'droppable') {
-          const draggedIndex = tasks[dragged.children[0].children[0].children[0].id].index;
-          const droppedIndex = tasks[e.children[0].children[0].children[0].id].index;
-          const tempDescription = tasks[draggedIndex].description;
-          const tempDescription2 = tasks[droppedIndex].description;
-          const tempChecked = tasks[draggedIndex].completed;
-          const tempChecked2 = tasks[droppedIndex].completed;
-          tasks[draggedIndex].index = droppedIndex;
-          tasks[droppedIndex].index = draggedIndex;
-          tasks[droppedIndex].description = tempDescription;
-          tasks[draggedIndex].description = tempDescription2;
-          tasks[droppedIndex].completed = tempChecked;
-          tasks[draggedIndex].completed = tempChecked2;
-          addTasks();
-          saveTasks();
+    e.addEventListener('drop', () => {
+      e.classList.remove('hover2');
+      dropped = e.children[0].children[0].id;
+      const swap = (arr, draggedIndex, droppedIndex) => {
+        const temp = arr[droppedIndex].description;
+        arr[droppedIndex].description = arr[draggedIndex].description;
+        arr[draggedIndex].description = temp;
+        const temp2 = arr[droppedIndex].completed;
+        arr[droppedIndex].completed = arr[draggedIndex].completed;
+        arr[draggedIndex].completed = temp2;
+        addTasks();
+        saveTasks();
+      };
+      if (dragged !== dropped) {
+        if (e.classList.contains('droppable')) {
+          swap(tasks, dragged, dropped);
         }
       }
     });
   });
 };
+
+export default sort;

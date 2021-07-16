@@ -1,37 +1,37 @@
 import { tasks } from './taskClass.js';
 // eslint-disable-next-line import/no-cycle
 import sort from './sort.js';
+import checkbox from './checkBox.js'
 
 const tasksContainer = document.getElementById('tasks');
 
-export default () => {
+const addTasks =  () => {
   tasksContainer.innerHTML = '';
-  tasks.forEach((element) => {
+  tasks.forEach((e) => {
     const li = document.createElement('li');
-    if (element.completed) {
+    if (e.completed ===true) {
       li.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center droppable">
-            <div class="droppable"> 
-            <input class="checkbox m-2" type="checkbox" id="${element.index}" checked>
-            <label for="${element.index}">${element.description}</label>
-            </div>
-            <i class="fas fa-ellipsis-v"></i>
-            </div>
+              <div>
+              <input class="checkbox m-2" type="checkbox" id="${e.index}" checked>
+              <label for="${e.index}">${e.description}</label>
+              </div>
+              <i class="fas fa-ellipsis-v"></i>
             `;
     } else {
       li.innerHTML = `
-            <div class="d-flex justify-content-between align-items-center droppable">
-            <div class="droppable"> 
-            <input class="checkbox m-2" type="checkbox" id="${element.index}">
-            <label class="droppable" for="${element.index}">${element.description}</label>
-            </div>
-            <i class="fas fa-ellipsis-v droppable" ></i>
-            </div>
+              <div>
+              <input class="checkbox m-2" type="checkbox" id="${e.index}">
+              <label for="${e.index}">${e.description}</label>
+              </div>
+              <i class="fas fa-ellipsis-v"></i>
             `;
     }
-    li.classList.add('list-group-item', 'draggable', 'droppable');
+    li.classList.add('list-group-item', 'draggable', 'droppable', 'd-flex', 'justify-content-between', 'align-items-center');
     li.setAttribute('draggable', 'true');
     tasksContainer.appendChild(li);
   });
   sort();
+  checkbox();
 };
+
+export default addTasks;
