@@ -1,7 +1,6 @@
+/* eslint-disable import/no-cycle */
 import { tasks } from './taskClass.js';
-// eslint-disable-next-line import/no-cycle
 import addTasks from './showTasks.js';
-// eslint-disable-next-line import/no-cycle
 import { saveTasks } from './localStorage.js';
 
 const sort = () => {
