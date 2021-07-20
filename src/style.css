@@ -1,23 +1,22 @@
-
-main {
-  margin: 0 auto;
-  border: solid 1px;
-  width: 80%;
+ul {
+  list-style-type: none;
 }
 
-#tasks {
-  width: 100%;
+a {
+  text-decoration: none;
+  color: black;
 }
 
-#tasks tr {
-  border: 1px solid #ddd;
-  padding: 8px;
+.draggable {
+  cursor: move;
 }
 
-#tasks td {
-  padding: 4px;
+.hover {
+  background-color: gray;
+  opacity: 0.6;
 }
 
-#tasks tr:nth-child(odd) {
-  background-color: lightgray;
+.hover2 {
+  background-color: rgb(255, 0, 64);
+  opacity: 0.6;
 }
